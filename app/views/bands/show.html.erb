@@ -1,1 +1,3 @@
-<h1><%= @band %></h1>
+<h1><%= @band.name %></h1>
+<h2>Albums!</h2>
+<%= render :partial => "albums/albums_list", :locals => {:albums => @band.albums, :include_tracks => true}%>

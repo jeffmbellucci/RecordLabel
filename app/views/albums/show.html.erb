@@ -1,6 +1,6 @@
 <h1><%= @album.name %></h1>
 <ul>
-	<li><%= link_to @album.band, band_url(@album.band) %></li>
+	<li><%= link_to @album.band.name, band_url(@album.band) %></li>
 	<li>Type: <%= @album.live ? "Live" : "Studio"%></li>
 	<li>Tracks <%= render :partial => "tracks/track_list",
 												:locals => {:tracks => @album.tracks}%></li>

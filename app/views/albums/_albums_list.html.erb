@@ -1,5 +1,9 @@
 <ul>
 	<% albums.each do |album|%>
-		<li><%= link_to album.name, album_url(album) %></li>
+		<li><%= link_to album.name, album_url(album) %>
+			<%if include_tracks%>
+				<%= render :partial => "tracks/track_list", :locals => {:tracks => album.tracks} %>
+			<%end%>
+			</li>
 	<%end%>
 </ul>

@@ -1,0 +1,3 @@
+<%= flash[:confirmation] if flash[:confirmation]%>
+<h1>Albums!</h1>
+<%= render :partial => "albums/albums_list", :locals => {:albums => @albums} %>

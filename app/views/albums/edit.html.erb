@@ -1,0 +1,8 @@
+<%= render :partial => "shared/show_errors" %>
+
+<h1>Change the name of the album <%= @album %></h1>
+<%= render :partial => "albums/album_form", :locals => {:album => @album} %>
+<form action="<%=album_url(@album)%>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete <%=@album.name%>">
+</form>

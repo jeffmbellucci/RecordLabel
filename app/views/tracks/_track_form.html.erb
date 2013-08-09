@@ -1,0 +1,30 @@
+<% saved = !! track.id %>
+
+<form action="<%= saved ? track_url(track) : tracks_url %>" method="post">
+	<%= render :partial => "shared/is_put_request" if saved %>
+	<% if !saved %>
+		<label for="track_album">Choose album for track</label>
+		<select name="track[album_id]" id="track_album">
+			<% albums.each do |album| %>
+				<option value="<%= album.id %>" <%="selected" if
+					album.id == track.album_id%>><%= album %> </option>
+			<% end %>
+		</select>
+	<% else %>
+		Album: <%=track.album.name%>
+	<% end %>
+	<br>
+
+	<label for="track_name">Name</label>
+	<input type="text" name="track[name]" id="track_name"
+					value="<%= track.name %>">
+					<br>
+	<label for="track_bonus">Bonus track?</label>
+	<input type="checkbox" name="track[bonus]"
+				 value="true" id="album_bonus" <%= "checked" if track.bonus %>>
+				 <br>
+	<label for="track_lyrics">Lyrics:</label>
+	<textarea name="track[lyrics]" id="track_lyrics"></textarea>
+	<br>
+	<input type="submit" value="<%= saved ? "Update Track" : "Create Track" %>">
+</form>

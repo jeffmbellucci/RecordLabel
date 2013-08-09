@@ -1,0 +1,8 @@
+<%= render :partial => "shared/show_errors" %>
+
+<h1>Change the name of the track <%= @track.name %></h1>
+<%= render :partial => "tracks/track_form", :locals => {:track => @track} %>
+<form action="<%=track_url(@track)%>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete <%=@track.name%>">
+</form>

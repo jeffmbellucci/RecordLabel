@@ -1,4 +1,4 @@
-<%= flash[:error] if flash[:error]%>
+<%= render :partial => "shared/show_errors" %>
 
 <h1> Create a band!</h1>
-<%= render :partial => "bands/band_form" %>
+<%= render :partial => "bands/band_form", :locals => {:band => @band} %>

@@ -1,6 +1,7 @@
 class BandsController < ApplicationController
 
   def new
+    @band = Band.new
     render :new
   end
 
@@ -10,7 +11,7 @@ class BandsController < ApplicationController
     if @band.save
       redirect_to band_url(@band)
     else
-      flash[:error] = "Invalid band."
+      flash[:errors] = @band.errors.full_messages
       render :new
     end
   end
@@ -31,7 +32,7 @@ class BandsController < ApplicationController
     if @band.save
       render :show
     else
-      flash[:error] = "Invalid band name"
+      flash[:errors] = @band.errors.full_messages
       render :edit
     end
   end

@@ -1,0 +1,28 @@
+<% saved = !! album.id %>
+
+<form action="<%= saved ? album_url(album) : albums_url %>" method="post">
+	<%= render :partial => "shared/is_put_request" if saved %>
+
+	<% if !saved %>
+		<label for="album_band">Choose band for album</label>
+		<select name="album[band_id]" id="album_band">
+			<% bands.each do |band| %>
+				<option value="<%= band.id %>" <%="selected" if band.id == album.band_id%>>
+					<%= band %>
+				</option>
+			<% end %>
+		</select>
+	<% else %>
+		Band: <%=album.band.name%>
+	<% end %>
+	<br>
+
+	<label for="album_name">Name</label>
+	<input type="text" name="album[name]" id="album_name"
+					value="<%= album.name %>">
+	<label for="album_live">Live album?</label>
+	<input type="checkbox" name="album[live]"
+				 value="true" id="album_live" <%= "checked" if album.live %>>
+
+	<input type="submit" value="<%= saved ? "Update Album" : "Create Album" %>">
+</form>

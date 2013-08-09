@@ -1,0 +1,8 @@
+<%= flash[:error] if flash[:error]%>
+
+<h1> Update a band!</h1>
+<%= render :partial => "bands/band_form", :locals => {:band => @band} %>
+<form action="<%=band_url(@band)%>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete <%=@band.name%>">
+</form>

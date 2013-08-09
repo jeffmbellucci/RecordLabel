@@ -1,0 +1,11 @@
+<% band ||= nil %>
+
+<form action="<%= band ? band_url(band) : bands_url %>" method="post">
+	<%= render :partial => "shared/is_put_request" if band %>
+
+	<label for="band_name">Name</label>
+	<input type="text" name="band[name]" id="band_name"
+					value="<%= band.name if band %>">
+
+	<input type="submit" value="<%= band ? "Update Band" : "Create Band" %>">
+</form>

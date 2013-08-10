@@ -1,4 +1,6 @@
 class TracksController < ApplicationController
+  before_filter :authenticate!
+
   def new
     @albums = Album.all
     @track = Track.new

@@ -1,4 +1,5 @@
 class BandsController < ApplicationController
+  before_filter :authenticate!
 
   def new
     @band = Band.new

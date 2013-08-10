@@ -27,4 +27,8 @@
 	<textarea name="track[lyrics]" id="track_lyrics"></textarea>
 	<br>
 	<input type="submit" value="<%= saved ? "Update Track" : "Create Track" %>">
+
+	<input type="hidden"
+	         name="authenticity_token"
+	         value="<%= form_authenticity_token %>">
 </form>
